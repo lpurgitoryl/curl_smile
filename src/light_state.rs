@@ -2,14 +2,16 @@
 
 // For now, all you need to know is that <T> means that the Some variant of the Option enum can hold one piece of data of any type, 
 // and that each concrete type that gets used in place of T makes the overall Option<T> type a different type.
+use crate::intent::Intent;
+
 #[derive(Debug, Default, Clone, PartialEq)]
-struct LightState {
+pub struct LightState {
     pub switch: Option<bool>,
     pub brightness: Option<u8>,
     pub color_temperature: Option<(u16, u16)>,
     pub rgb: Option<(u8, u8, u8)>,
     pub white: Option<u8>,
-    pub effect: Option<Effect>,
+   // pub effect: Option<Effect>,
     pub speed: Option<u8>,
 }
 
@@ -30,7 +32,7 @@ impl LightState {
             Intent::ColorTemperature { ww, cw } => self.color_temperature = Some((ww, cw)),
             Intent::Rgb { red, green, blue } => self.rgb = Some((red, green, blue)),
             Intent::White { white } => self.white = Some(white),
-            Intent::Effect { effect } => self.effect = Some(effect),
+        //    Intent::Effect { effect } => self.effect = Some(effect),
             Intent::Speed { speed } => self.speed = Some(speed),
         }
     }
