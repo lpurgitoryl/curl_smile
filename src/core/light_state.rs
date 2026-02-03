@@ -2,7 +2,7 @@
 
 // For now, all you need to know is that <T> means that the Some variant of the Option enum can hold one piece of data of any type, 
 // and that each concrete type that gets used in place of T makes the overall Option<T> type a different type.
-use crate::intent::Intent;
+use crate::core::intent::Intent;
 
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct LightState {

@@ -1,8 +1,6 @@
-pub mod intent;
-pub mod light_state;
+pub mod core;
 
-pub use intent::Intent;
-pub use light_state::LightState;
+pub use core::{Intent, LightState, DeviceCommand};
 
 pub fn add(left: u64, right: u64) -> u64 {
     left + right
