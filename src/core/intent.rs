@@ -1,10 +1,3 @@
-/* 
-https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
-'enums give you a way of saying a value is one of a possible set of values'
-
-Here we define an enum where it can contain different kinds (variants) of said command
-*/
-
 #[derive(Debug, Clone, PartialEq)]
 pub enum Intent {
     Switch { on: bool },
