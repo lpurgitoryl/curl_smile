@@ -1,6 +1,7 @@
 pub mod core;
+pub use core::{DeviceCommand, DeviceCompiler, Intent, LightState};
 
-pub use core::{Intent, LightState, DeviceCommand};
+pub mod bluetooth_comunication;
 
 pub fn add(left: u64, right: u64) -> u64 {
     left + right
@@ -19,8 +20,16 @@ mod tests {
     #[test]
     fn intent_equality_works() {
         assert_eq!(
-            Intent::Rgb { red: 255, green: 0, blue: 0 },
-            Intent::Rgb { red: 255, green: 0, blue: 0 }
+            Intent::Rgb {
+                red: 255,
+                green: 0,
+                blue: 0
+            },
+            Intent::Rgb {
+                red: 255,
+                green: 0,
+                blue: 0
+            }
         );
 
         assert_ne!(
@@ -43,11 +52,14 @@ mod tests {
 
         s.update(Intent::Switch { on: true });
         s.update(Intent::Brightness { brightness: 100 });
-        s.update(Intent::Rgb { red: 1, green: 2, blue: 3 });
+        s.update(Intent::Rgb {
+            red: 1,
+            green: 2,
+            blue: 3,
+        });
 
         assert_eq!(s.switch, Some(true));
         assert_eq!(s.brightness, Some(100));
         assert_eq!(s.rgb, Some((1, 2, 3)));
     }
 }
-
