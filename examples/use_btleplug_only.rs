@@ -1,5 +1,8 @@
-// See the "macOS permissions note" in README.md before running this on macOS
-// Big Sur or later.
+/*
+    File is from the official btleplug examples.
+    https://github.com/deviceplug/btleplug/blob/master/examples/discover_adapters_peripherals.rs
+
+*/
 
 use std::time::Duration;
 use tokio::time;

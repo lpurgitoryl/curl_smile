@@ -1,7 +1,8 @@
 pub mod core;
 pub use core::{DeviceCommand, DeviceCompiler, Intent, LightState};
 
-pub mod bluetooth_comunication;
+pub mod btle_communication;
+pub mod hardware_abstraction_layer;
 
 pub fn add(left: u64, right: u64) -> u64 {
     left + right

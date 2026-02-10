@@ -30,7 +30,7 @@ TLDR; I'm learning rust as im doing this port of `cheshire` the python module. T
 `DeviceCommand`
 : A struct containing the generated payload (bytes) from the API compiler. The payload can change based on what device you are connected to. Produced by compiling LightState and consumed by the transport layer.
 
-Intent → LightState → [ DeviceCompiler ] → DeviceCommand → Transport
+`Intent` feeds into the `LightState` where it calls the `DeviceCompiler` which generates the correct `DeviceCommand`. This is then used by the `BLETransmitter`
 
 ### Questions
 
