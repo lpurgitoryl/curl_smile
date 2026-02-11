@@ -51,7 +51,7 @@ mod tests {
     fn light_state_update_sets_fields() {
         let mut s = LightState::new();
 
-        s.update(Intent::Switch { on: true });
+        s.update(Intent::SwitchOn(true));
         s.update(Intent::Brightness { brightness: 100 });
         s.update(Intent::Rgb {
             red: 1,

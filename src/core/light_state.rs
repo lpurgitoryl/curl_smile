@@ -18,13 +18,13 @@ impl LightState {
 
     pub fn update(&mut self, intent: Intent) {
         match intent {
-            Intent::Switch { on } => self.switch = Some(on),
+            Intent::SwitchOn(on) => self.switch = Some(on),
             Intent::Brightness { brightness } => self.brightness = Some(brightness),
             Intent::ColorTemperature { ww, cw } => self.color_temperature = Some((ww, cw)),
             Intent::Rgb { red, green, blue } => self.rgb = Some((red, green, blue)),
             Intent::White { white } => self.white = Some(white),
             //    Intent::Effect { effect } => self.effect = Some(effect),
-            Intent::Speed { speed } => self.speed = Some(speed),
+            Intent::Speed(speed) => self.speed = Some(speed),
         }
     }
 }
