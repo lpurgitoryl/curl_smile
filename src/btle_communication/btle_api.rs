@@ -55,6 +55,7 @@ pub async fn connect_to_btle_device(device: &SupportedDevice) -> anyhow::Result<
         }
     }
 
+    time::sleep(Duration::from_secs(10)).await;
     let is_connected = device.peripheral.is_connected().await?;
     println!(
         "Now connected ({:?}) to peripheral {:?}...",
