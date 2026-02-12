@@ -1,3 +1,55 @@
+//! # curl_smile
+//!
+//! Rust API for Keepsmile Bluetooth LE lights. Uses `btleplug` for cross-platform BLE support.
+//!
+//! ## Example
+//!
+//! This is the same example as `examples/use_curl_smile_demo.rs` in the repository: demos how to scan, connect,
+//! update state, send commands, disconnect.
+//!
+//! ```no_run
+//! use curl_smile::btle_communication::btle_api::{
+//!     connect_to_btle_device, disconnect_from_btle_device, find_supported_devices,
+//! };
+//! use curl_smile::core::Intent::{Brightness, Rgb, SwitchOn};
+//! use curl_smile::core::light_state::LightState;
+//!
+//! #[tokio::main]
+//! async fn main() -> anyhow::Result<()> {
+//!     let devices = find_supported_devices().await?;
+//!
+//!     for d in devices {
+//!         connect_to_btle_device(&d).await?;
+//!
+//!         let mut state = LightState::new();
+//!         state.update(SwitchOn(true));
+//!         state.update(Brightness { brightness: 0x30 });
+//!         state.update(Rgb {
+//!             red: 0x0e,
+//!             green: 0x00,
+//!             blue: 0xaa,
+//!         });
+//!
+//!         d.send_commands(&state).await?;
+//!         disconnect_from_btle_device(&d).await?;
+//!     }
+//!
+//!     Ok(())
+//! }
+//! ```
+//!
+//! ## Modules
+//!
+//! - `core`: high-level types.
+//! - `btle_communication`: BLE scanning/connection.
+//! - `hardware_abstraction_layer`: defines supported-devices and related GATT profile.
+//! - `hardware_abstraction_layer/compiler`: converts state into command bytes for a target device.
+//!
+//! ## Supported devices
+//!
+//! See the repository README for the current supported-device list. Applications
+//! should use `find_supported_devices()` rather than scanning for arbitrary peripherals.
+
 pub mod core;
 pub use core::{DeviceCommand, DeviceCompiler, Intent, LightState};
 
