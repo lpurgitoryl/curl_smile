@@ -77,5 +77,3 @@ pub async fn disconnect_from_btle_device(device: &SupportedDevice) -> anyhow::Re
     }
     Ok(())
 }
-
-pub async fn send() {}

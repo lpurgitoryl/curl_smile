@@ -4,19 +4,9 @@ pub use core::{DeviceCommand, DeviceCompiler, Intent, LightState};
 pub mod btle_communication;
 pub mod hardware_abstraction_layer;
 
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
 
     #[test]
     fn intent_equality_works() {

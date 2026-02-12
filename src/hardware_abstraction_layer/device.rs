@@ -1,8 +1,5 @@
-use crate::core::DeviceCompiler;
-use crate::core::LightState;
-use btleplug::api::Peripheral;
-use btleplug::api::WriteType;
-use btleplug::api::bleuuid::uuid_from_u16;
+use crate::core::{DeviceCompiler, LightState};
+use btleplug::api::{Peripheral, WriteType, bleuuid::uuid_from_u16};
 use std::time::Duration;
 use tokio::time;
 use uuid::Uuid;

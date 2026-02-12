@@ -1,7 +1,12 @@
 [package]
 name = "curl_smile"
-version = "0.1.0"
+version = "0.0.5"
 edition = "2024"
+license = "MIT"
+description = "A simplified rust API for Keepsmile lights"
+repository = ""
+keywords = ["bluetooth, lights, api, btle, ble"]
+categories = ["command-line-utilities", "embedded", "development-tools"]
 
 [dependencies]
 btleplug = "0.11.8"
