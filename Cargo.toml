@@ -5,7 +5,7 @@ edition = "2024"
 license = "MIT"
 description = "A simplified rust API for Keepsmile lights"
 repository = "https://github.com/lpurgitoryl/curl_smile"
-keywords = ["bluetooth, lights, api, btle, ble"]
+keywords = ["bluetooth, lights, api"]
 categories = ["command-line-utilities", "embedded", "development-tools"]
 
 [dependencies]
