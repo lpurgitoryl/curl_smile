@@ -22,6 +22,7 @@ impl DeviceKind {
     }
 }
 
+#[derive(Debug)]
 pub struct DeviceProfile {
     pub write_service: Uuid,
     pub write_characteristic: Uuid,
@@ -54,6 +55,7 @@ impl DeviceProfile {
     }
 }
 
+#[derive(Debug)]
 pub struct SupportedDevice {
     pub name: String,
     pub kind: DeviceKind,
