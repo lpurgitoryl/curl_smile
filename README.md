@@ -1,14 +1,17 @@
 # curl_smile
 
-Rust API for Keepsmile Bluetooth LE lights.
+Rust API for Keepsmile Bluetooth lights.
 Uses `btleplug` under the hood.
 
 ## Usage
 
-The example below scans for supported Bluetooth LE devices and tries to control any
+The example below scans for supported Bluetooth devices and tries to control any
 which are supported.
 
 Code below can be found in `examples\use_curl_smile_demo.rs`
+
+Run the example code below in the root directory with
+`cargo run --example use_curl_smile_demo`
 
 ```rust
 use curl_smile::btle_communication::btle_api::{
