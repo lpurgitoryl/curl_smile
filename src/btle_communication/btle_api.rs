@@ -21,7 +21,7 @@ pub async fn find_supported_devices() -> anyhow::Result<Vec<SupportedDevice>> {
             .start_scan(ScanFilter::default())
             .await
             .expect("Can't scan BLE adapter for connected devices...");
-        time::sleep(Duration::from_secs(10)).await;
+        time::sleep(Duration::from_secs(5)).await;
 
         let peripherals = adapter.peripherals().await?;
 
@@ -47,20 +47,15 @@ pub async fn find_supported_devices() -> anyhow::Result<Vec<SupportedDevice>> {
 }
 
 pub async fn connect_to_btle_device(device: &SupportedDevice) -> anyhow::Result<()> {
-    let is_connected = device.peripheral.is_connected().await?;
-
-    if !is_connected {
-        if let Err(err) = device.peripheral.connect().await {
-            eprintln!("Error connecting to peripheral, skipping: {}", err);
-        }
+    if device.peripheral.is_connected().await? {
+        println!("Already connected to peripheral {:?}", device.name);
+        return Ok(());
     }
 
-    time::sleep(Duration::from_secs(10)).await;
-    let is_connected = device.peripheral.is_connected().await?;
-    println!(
-        "Now connected ({:?}) to peripheral {:?}...",
-        is_connected, device.name
-    );
+    device.peripheral.connect().await?;
+
+    println!("Connected to peripheral {:?}", device.name);
+
     Ok(())
 }
 
